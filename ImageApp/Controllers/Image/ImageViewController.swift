@@ -177,8 +177,10 @@ extension ImageViewController: UISearchBarDelegate {
         }
     }
 
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.text = ""
-//        loadImages(searchText: "")
-//    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if imagesData?.hits.count ?? 0 == 0 {
+            loadImages()
+        }
+        searchBar.text = ""
+    }
 }

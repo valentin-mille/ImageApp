@@ -30,15 +30,28 @@ class ImageDetailViewController: UIViewController {
     // MARK: - Methods
 
     private func addStack() {
+        let imageWidth = 100
+        let imageHeight = 100
+        var xIndex = 0
+        var yIndex = 0
+        let maxWidth = Int(UIScreen.main.bounds.width + CGFloat(imageWidth))
+
         for i in 0 ..< imagesURL.count {
-            let xOffset = i * 100
-            let yOffset = i * 10
-            let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: xOffset, y: yOffset), size: CGSize(width: 100, height: 100)))
+            var xPosition = xIndex * imageWidth
+
+            if (xPosition > maxWidth) {
+                xIndex = 0
+                yIndex += 1
+            }
+            xPosition = xIndex * imageWidth
+            let yPosition = yIndex * imageHeight
+            let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: xPosition, y: yPosition), size: CGSize(width: imageWidth, height: imageHeight)))
+
             imageView.contentMode = .scaleAspectFit
             imageView.kf.setImage(with: imagesURL[i])
             imageView.layer.cornerRadius = 3
-            stackImage.addArrangedSubview(imageView)
+            stackImage.addSubview(imageView)
+            xIndex += 1
         }
-//        stackImage.layoutSubviews()
     }
 }
