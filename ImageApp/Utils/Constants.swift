@@ -9,6 +9,6 @@ import Foundation
 
 enum Constants {
     enum API {
-        static let key = "18021445-326cf5bcd3658777a9d22df6f"
+        static let key = "18021445-326cf5bcd3658777a9d22df6f" // to remove
     }
 }
